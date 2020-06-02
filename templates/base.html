@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load static %}
+	<title>{% block title %}{{ title }}{% endblock %}</title>
+
+	<meta charset="utf-8"/>
+
+	<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+	<script type="text/javascript" src="/static/js/dev-vue.js"></script>
+	{% block css %} {% endblock %}
+
+	{% block js %}{% endblock %}
+</head>
+<body style="background-color: antiquewhite;">
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container" style="background-color: rgb(43, 76, 226);">
+				<a class="navbar-brand" href="{% url 'home' %}">
+				<img src="{% static 'logo.png' %}"  height=30 width=30 class="d-inline-block alighn-top"/>
+				Med Chat</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+				  <span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+				  <div class="navbar-nav ml-auto">
+					{% if user.is_authenticated %}
+					<a class="nav-item nav-link" href=""><span class="oi oi-plus"></span></a>
+					<a class="nav-item nav-link" href="javascript:{document.getElementById('logout').submit()}" onclick="">Logout</a>
+					<form id="logout" method='POST' action="{% url 'logout' %}">
+							{% csrf_token %}
+							<input type="hidden"/>
+					</form> 
+					{% else %}
+					<a class="nav-item nav-link" href="{% url 'signup' %}">Sign up</a>
+					<a class="nav-item nav-link" href="{% url 'login' %}">login</a>
+					{% endif %}
+				</div>
+				</div>
+			</div>
+			  </nav>
+</header>
+
+	<con
+	<!-- Image and text -->
+	<div style="
+            margin: auto;
+            width: 50%;
+            border: 3px ; 
+            padding: 10px;
+">
+
+	<div
+	style="width: 500px;
+	border: 4px;
+	border-color: black;
+	border-style: solid;
+	height: 2000px;
+	border-radius: 25px;
+	justify-content: center;
+	">
+	<nav class="navbar navbar-light",style="border-radius:30px;" >
+
+		<a class="navbar-brand" href="#">
+	    <img src="/static/img/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+	    ChatBot
+	  </a>
+	</nav>
+	<img src="/static/img/bot.jpg"  height="700" id="abc" alt="" style="
+	border-radius: 50%;
+	opacity: 0.5;
+	width: inherit;
+	padding: 10px;
+">
+	{% block content %}{% endblock %}
+</div></div>
+</body>
+</html>

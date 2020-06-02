@@ -1,0 +1,17 @@
+{% extends 'base1.html' %}
+
+{% block content %}
+<body style="background-color: antiquewhite ;align-content: center; ">
+<div style="background-color: antiquewhite ;align-content: center; padding-top: 110px; ">
+<h1 style="text-align: center; position: relative;"> Welcome to Health Chat!!!..</h1>
+<p style="text-align: center; position: relative;">You may have to login or signup(if already not the user)</p>
+</div>
+{% if user.is_authenticated %}
+<div style="align-content: center; padding: 10px; position: relative;">
+<button style="align-content: center; padding: 10px;"><a href="{% url 'home1' %}"> Start Chat </a></button>
+</div>
+{% endif %}
+</body>
+{% endblock %}
+
+
